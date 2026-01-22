@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   operations_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/20 22:19:24 by heychong          #+#    #+#             */
-/*   Updated: 2026/01/22 18:47:48 by heychong         ###   ########.fr       */
+/*   Created: 2026/01/22 17:40:08 by heychong          #+#    #+#             */
+/*   Updated: 2026/01/22 18:27:20 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stsdlib.h>
-
-typedef struct	s_list
+void	sa(t_stack *stack)
 {
-	int				value;
-	struct s_list	*next;
-	struct s_list	*prev;
-}	t_list;
+	t_list	*first;
+	t_list	*second;
 
-typedef struct	s_stack
-{
-	t_list	*a_top;
-	t_list	*b_top;
-	int		size_a;
-	int		size_b;
-}	t_stack;
+	if (stack->size_a < 2)
+		return ;
+	first = stack->a_top;
+	second = first->next;
+	first->next = second->next;
+	if (second -> next)
+		second->next->prev = first;
+	second->next = first;
+	first->prev = second;
+	first->prev = NULL;
 
-#endif
+	stack->a_top = second;
+	write(1, "sa\n", 3);
+}
