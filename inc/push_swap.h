@@ -6,7 +6,7 @@
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 22:19:24 by heychong          #+#    #+#             */
-/*   Updated: 2026/01/22 18:47:48 by heychong         ###   ########.fr       */
+/*   Updated: 2026/01/29 18:09:30 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 typedef struct	s_list
 {
 	int				value;
+	int				order;
 	struct s_list	*next;
-	struct s_list	*prev;
 }	t_list;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	t_list	*a_top;
 	t_list	*b_top;
