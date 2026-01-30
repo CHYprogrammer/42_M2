@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_rotate.c                                :+:      :+:    :+:   */
+/*   ops_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 13:57:45 by heychong          #+#    #+#             */
-/*   Updated: 2026/01/29 19:38:57 by heychong         ###   ########.fr       */
+/*   Updated: 2026/01/30 18:36:12 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ra(t_stack *stack)
 	if (stack->size_a < 2)
 		return ;
 	first = stack->a_top;
-	last = ft_lstlast(stack->a_top);
+	last = stack->a_top;
+	while (last->next)
+		last = last->next;
 	stack->a_top = first->next;
 	first->next = NULL;
 	last->next = first;
@@ -35,7 +37,9 @@ void	rb(t_stack *stack)
 	if (stack->size_b < 2)
 		return ;
 	first = stack->b_top;
-	last = ft_lstlast(stack->b_top);
+	last = stack->b_top;
+	while (last->next)
+		last = last->next;
 	stack->b_top = first->next;
 	first->next = NULL;
 	last->next = first;
