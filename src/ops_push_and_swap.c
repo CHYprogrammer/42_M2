@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_p_s.c                                   :+:      :+:    :+:   */
+/*   ops_push_and_swap.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 17:40:08 by heychong          #+#    #+#             */
-/*   Updated: 2026/01/29 19:40:05 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/02 13:46:30 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	sa(t_stack *stack)
 	first = stack->a_top;
 	second = first->next;
 	third = second->next;
-	//swap the first 2 elements at the top.
 	stack->a_top = second;
 	second->next = first;
 	first->next = third;
@@ -41,7 +40,6 @@ void	sb(t_stack *stack)
 	first = stack->b_top;
 	second = first->next;
 	third = second->next;
-	//swap the first 2 elements at the top.
 	stack->b_top = second;
 	second->next = first;
 	first->next = third;
@@ -52,7 +50,7 @@ void	pa(t_stack *stack)
 {
 	t_list	*tmp;
 
-	if (!stack->size_b)
+	if (stack->size_b == 0)
 		return ;
 	tmp = stack->b_top;
 	stack->b_top = tmp->next;
@@ -67,7 +65,7 @@ void	pb(t_stack *stack)
 {
 	t_list	*tmp;
 
-	if (!stack->size_a)
+	if (stack->size_a == 0)
 		return ;
 	tmp = stack->a_top;
 	stack->a_top = tmp->next;

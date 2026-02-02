@@ -6,7 +6,7 @@
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:15:48 by heychong          #+#    #+#             */
-/*   Updated: 2026/01/30 19:08:26 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/02 20:42:58 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ static int is_valid_number_str(const char *str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
-	if (!str)
+	if (!str[i])
 		return (0);
 	while (str[i])
 	{
@@ -30,40 +32,39 @@ static int is_valid_number_str(const char *str)
 	return (1);
 }
 
-static int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
 	long	res;
-	int		pos_neg;
+	int		sign;
 
-	if (str == "-2147483648")
-		return (-2147483648);
-	pos_neg = 1;
+	if (!str)
+		return (0);
+	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
+		str++;
+	sign = 1;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			pos_neg = -1;
+			sign = -1;
 		str++;
 	}
 	res = 0;
 	while (*str >= '0' && *str <= '9')
 	{
-		res = res * 10 + (*str - '0');
+		res = (res * 10) + (*str - '0');
 		str++;
 	}
-	return (res * pos_neg);
+	return (res * sign);
 }
 
 int	free_split(char	**split)
 {
-	int	i;
-
 	if (!split)
 		return (0);
-	i = 0;
-	while (split[i])
+	while (*split)
 	{
-		free(split[i]);
-		i++;
+		free(*split);
+		split++;
 	}
 	free(split);
 	return (0);
@@ -75,7 +76,7 @@ int	init_stack_a(t_stack *stack, int argc, char **argv)
 	int		i;
 	char	**nums;
 	int		j;
-	int		value;
+	long	value;
 
 	stack->a_top = NULL;
 	stack->size_a = 0;
@@ -90,7 +91,9 @@ int	init_stack_a(t_stack *stack, int argc, char **argv)
 		{
 			if (!is_valid_number_str(nums[j]))
 				return (free_split(nums));
-			value = ft_atoi(nums[j]);
+			value = ft_atol(nums[j]);
+			if (value > INT_MAX || value < INT_MIN)
+				return (free_split(nums));
 			ft_lstadd_back(&stack->a_top, ft_lstnew((int)value));
 			stack->size_a++;
 			j++;
@@ -112,7 +115,7 @@ int	detect_duplicates(t_list *stack)
 		inner = outer->next;
 		while (inner)
 		{
-			if (outer->vaalue == inner->value)
+			if (outer->value == inner->value)
 				return (1);
 			inner = inner->next;
 		}
@@ -120,4 +123,3 @@ int	detect_duplicates(t_list *stack)
 	}
 	return (0);
 }
-
