@@ -6,7 +6,7 @@
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:41:14 by heychong          #+#    #+#             */
-/*   Updated: 2026/01/30 19:55:20 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/04 17:10:52 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,68 @@ void	push_swap_bit(t_stack *stack, int bit_pos, int *a_count)
 			pb(stack); //1側をBに移動
 		current = stack->a_top; //回転後の新トップ
 	}
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_list	*current;
+
+	if (!stack || !stack->a_top)
+		return (1); //空orNULLはソート済み扱い
+	current = stack->a_top;
+	while (cur->next)
+	{
+		if (cur->value > cur->next->value)
+			return (0);
+		cur = cur->next;
+	}
+	return (1);
+}
+
+typedef struct s_list
+{
+	struct s_list	*next;
+	void			*data;
+}	t_list;
+
+int	ft_lstsize(t_list *lst)
+{
+	int	size;
+
+	size = 0;
+	while (lst)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
+}
+
+t_list	*ft_lstnew(void *data)
+{
+	t_list	*node;
+
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->data = data;
+	node->next = NULL;
+	return (node);
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*current;
+
+	if (!lst || !new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	current = *lst;
+	while (cur->next)
+		cur = cur->next;
+	cur->next = new;
 }
