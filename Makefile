@@ -1,12 +1,13 @@
-NAME = push_swap
+NAME = push_swap.a
 SRC = \
-	src/main.c \
-	src/push_swap.c \
-	src/operations_utils.c \
-	src/push.c \
-	src/swap.c \
-	src/rotate.c \
-	src/rev_rotate.c
+	main.c \
+	radix_sort.c \
+	set_order_and_check_dup.c \
+	init_stack.c \
+	my_qsort.c \
+	op_funcs.c \
+	lst_funcs.c \
+	ft_funcs.c
 OBJ = $(SRC:.c=.o)
 CCW = cc -Wall -Werror -Wextra
 AR = ar rcs
@@ -17,7 +18,7 @@ $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
 $(OBJ):
-	$(CCW) -I inc -c $(SRC)
+	$(CCW) -c $(SRC)
 
 clean:
 	rm -f $(OBJ)

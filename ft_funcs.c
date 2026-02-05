@@ -1,17 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 20:15:24 by heychong          #+#    #+#             */
-/*   Updated: 2026/01/30 11:52:04 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/05 19:21:33 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//ft_atol
+long	ft_atol(const char *str)
+{
+	long	res;
+	int		sign;
+
+	if (!str)
+		return (0);
+	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
+		str++;
+	sign = 1;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	res = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		res = (res * 10) + (*str - '0');
+		str++;
+	}
+	return (res * sign);
+}
+
+//ft_split
 int	count_words(char const *str, char delimiter)
 {
 	int	count;
