@@ -6,7 +6,7 @@
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 20:16:02 by heychong          #+#    #+#             */
-/*   Updated: 2026/02/06 14:05:57 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/06 18:01:10 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	sort_three(t_stack *stack)
 	else if (a < b && b > c && a < c)
 	{
 		sa(stack);
-		rra(stack);
+		ra(stack);
 	}
 	else if (a < b && b > c && a > c)
 		rra(stack);
