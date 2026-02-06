@@ -1,7 +1,8 @@
-NAME = push_swap.a
+NAME = push_swap
 SRC = \
 	main.c \
 	radix_sort.c \
+	sort_short.c \
 	set_order_and_check_dup.c \
 	init_stack.c \
 	my_qsort.c \
@@ -15,7 +16,7 @@ AR = ar rcs
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+	$(CCW) $(OBJ) -o $(NAME)
 
 $(OBJ):
 	$(CCW) -c $(SRC)

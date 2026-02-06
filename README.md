@@ -1,28 +1,63 @@
 *This project has been created as part of the 42 curriculum by <heychong>.*
 
+# PUSH_SWAP
 
 ## Description
 
-The Push swap project is a simple yet highly structured assignment focused on learning data sorting algorithms.
-Students have at thier disposal a set of integer values, 2 stacks, and a set of instructions to manipulate both stacks.
-The goal is to write a C program that calculates and displays the shortest sequence of Push swap instructions needed to sort the given integers.
-The learning objective of this project are rigor, proficiency in C, and the application of basic algorithms, with a particular focus on their complexity.
+The **push_swap** project focuses on sorting a list of integers using two stacks and a restricted set of operations.
+The goal is to output the smallest possible sequence of valid instructions that sorts the initial stack in ascending order.
+
+The program takes a list of integers as input, stores them in stack **A**, and uses stack **B** as auxiliary storage. Only predefined operations such as swap, push, rotate, and reverse rotate are allowed. Direct access to elements or arbitrary swaps are forbidden, which requires the implementation of an efficient sorting strategy under strict constraints.
+
+This project emphasizes algorithmic thinking, data structure manipulation, and complexity optimization, as performance is evaluated based on the number of operations produced for various input sizes.
 
 
 ## Instructions
 
-### Benchmark
+### Compilation
+compile the program using the provided Makefile:
+```
+make
+```
 
-To validate this project, you must perform certain sorts with a minimal number of oper-
-ations:
-• For maximum project validation (100%) and eligibility for bonuses, you must:
-◦ Sort 100 random numbers in fewer than 700 operations.
-◦ Sort 500 random numbers in no more than 5500 operations.
-• For minimal project validation (which implies a minimum grade of 80%), you
-can succeed with different averages:
-◦ 100 numbers in under 1100 operations and 500 numbers in under
-8500 operations
-◦ 100 numbers in under 700 operations and 500 numbers in under
-11500 operations
-◦ 100 numbers in under 1300 operations and 500 numbers in under
-5500 operations
+To remove object files:
+```
+make clean
+```
+
+To remove the project:
+```
+make fclean
+```
+
+To recompile the project:
+```
+make re
+```
+
+### Execution
+```
+./push_swap 4 -67 3 87 23 or ./push_swap "4 -67 3 87 23"
+```
+
+
+## Resources
+
+### Technical References
+**IT用語辞典**:
+Used to understand new concepts such as stacks, time complexity, and list data structures.
+
+**Quiita**:
+Consulted for practical examples of stack operations and sorting algorithms, particularly radix sort implementations.
+
+### Use of AI Assistance
+
+AI was used as a development support tool:
+
+・Detecting typos and inconsistencies in self-written code.
+
+・Pointing out potential logical errors in algorithms and stack operations.
+
+・Discussing identified issues to deepen understanding and correct the logic.
+
+All core logic and implementation decisions were made by the author, with AI used solely for review and conceptual clarification.

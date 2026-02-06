@@ -6,7 +6,7 @@
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:44:10 by heychong          #+#    #+#             */
-/*   Updated: 2026/02/05 20:22:23 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/06 15:13:59 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,33 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+int	put_error(void)
+{
+	write(2, "Error\n", 6);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
 
 	if (argc < 2)
-		return (0);
+		return (put_error());
 	stack.a_top = NULL;
 	stack.b_top = NULL;
 	stack.size_a = 0;
 	stack.size_b = 0;
 	if (!init_stack_a(&stack, argc, argv) || !set_order_and_check_dup(&stack))
 	{
-		write(2, "Error\n", 6);
 		free_stack(&stack);
-		return (1);
+		return (put_error());
 	}
 	if (is_sorted(&stack))
 		return (free_stack(&stack));
-	//if (stack.size_a <= 5)
-	//	sort_short(&stack);
-	//else
-	radix_sort(&stack);
+	if (stack.size_a <= 5)
+		sort_short(&stack);
+	else
+		radix_sort(&stack);
 	free_stack(&stack);
 	return (0);
 }
