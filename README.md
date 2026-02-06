@@ -47,7 +47,7 @@ make re
 **IT用語辞典**:
 Used to understand new concepts such as stacks, time complexity, and list data structures.
 
-**Quiita**:
+**Qiita**:
 Consulted for practical examples of stack operations and sorting algorithms, particularly radix sort implementations.
 
 ### Use of AI Assistance
