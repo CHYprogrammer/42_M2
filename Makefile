@@ -8,7 +8,8 @@ SRC = \
 	my_qsort.c \
 	op_funcs.c \
 	lst_funcs.c \
-	ft_funcs.c
+	ft_split.c \
+	ft_atol.c
 OBJ = $(SRC:.c=.o)
 CCW = cc -Wall -Werror -Wextra
 AR = ar rcs

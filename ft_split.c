@@ -1,46 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_funcs.c                                         :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 20:15:24 by heychong          #+#    #+#             */
-/*   Updated: 2026/02/08 19:50:34 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/09 01:30:25 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//ft_atol
-long	ft_atol(const char *str)
-{
-	long	res;
-	int		sign;
-
-	if (!str)
-		return (0);
-	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
-		str++;
-	sign = 1;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	res = 0;
-	while (*str >= '0' && *str <= '9')
-	{
-		if (res > (LONG_MAX / 10) || res < (LONG_MIN / 10))
-			return (LONG_MAX);
-		res = (res * 10) + (*str - '0');
-		str++;
-	}
-	return (res * sign);
-}
-
-//ft_split
 int	count_words(char const *str, char delimiter)
 {
 	int	count;
@@ -64,9 +35,9 @@ int	count_words(char const *str, char delimiter)
 
 char	*dup_word(char const *str, char delimiter)
 {
-	int		len;
+	size_t	len;
 	char	*word;
-	int		i;
+	size_t	i;
 
 	len = 0;
 	while (str[len] && str[len] != delimiter)
@@ -92,16 +63,10 @@ char	**free_all(char **arr, int i)
 	return (NULL);
 }
 
-char	**ft_split(char *str, char delimiter)
+char	**exec_split(char *str, char delimiter, char **result)
 {
-	char	**result;
-	int		i;
+	size_t	i;
 
-	if (!str)
-		return (NULL);
-	result = malloc(sizeof(char *) * (count_words(str, delimiter) + 1));
-	if (!result)
-		return (NULL);
 	i = 0;
 	while (*str)
 	{
@@ -119,4 +84,18 @@ char	**ft_split(char *str, char delimiter)
 	}
 	result[i] = NULL;
 	return (result);
+}
+
+char	**ft_split(char *str, char delimiter)
+{
+	char	**result;
+	int		words;
+
+	words = count_words(str, delimiter);
+	if (words == 0)
+		return (0);
+	result = malloc(sizeof(char *) * (words + 1));
+	if (!result)
+		return (NULL);
+	return (exec_split(str, delimiter, result));
 }

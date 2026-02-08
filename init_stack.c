@@ -6,7 +6,7 @@
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 18:15:48 by heychong          #+#    #+#             */
-/*   Updated: 2026/02/08 19:51:12 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/09 01:33:31 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	free_split(char	**split)
 
 static int	is_valid_number_str(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	if (!str)
 		return (0);
@@ -55,6 +55,7 @@ int	exec_init(t_stack *stack, char *str)
 	char	**nums;
 	int		j;
 	long	value;
+	t_list	*new_node;
 
 	nums = ft_split(str, ' ');
 	if (!nums)
@@ -67,7 +68,10 @@ int	exec_init(t_stack *stack, char *str)
 		value = ft_atol(nums[j]);
 		if (value > INT_MAX || value < INT_MIN)
 			return (free_split(nums));
-		ft_lstadd_back(&stack->a_top, ft_lstnew((int)value));
+		new_node = ft_lstnew((int)value);
+		if (!new_node)
+			return (free_split(nums));
+		ft_lstadd_back(&stack->a_top, new_node);
 		stack->size_a++;
 		j++;
 	}
@@ -77,7 +81,7 @@ int	exec_init(t_stack *stack, char *str)
 
 int	init_stack_a(t_stack *stack, int argc, char **argv)
 {
-	int		i;
+	int	i;
 
 	stack->a_top = NULL;
 	stack->size_a = 0;

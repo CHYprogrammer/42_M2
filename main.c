@@ -6,7 +6,7 @@
 /*   By: heychong <heychong@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:44:10 by heychong          #+#    #+#             */
-/*   Updated: 2026/02/06 15:13:59 by heychong         ###   ########.fr       */
+/*   Updated: 2026/02/09 00:00:51 by heychong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 	t_stack	stack;
 
 	if (argc < 2)
-		return (put_error());
+		return (0);
 	stack.a_top = NULL;
 	stack.b_top = NULL;
 	stack.size_a = 0;
